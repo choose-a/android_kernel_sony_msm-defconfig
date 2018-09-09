@@ -1,4 +1,4 @@
-export ANDROID_ROOT=../../../../../../../..
+export ANDROID_ROOT=../../../../../../..
 export KERNEL_TOP=$ANDROID_ROOT/kernel/sony/msm
 export KERNEL_CFG=arch/arm64/configs/sony
 export KERNEL_TMP=$ANDROID_ROOT/out/kernel-tmp
@@ -34,7 +34,7 @@ tama)
 esac
 
 for device in $DEVICE; do \
-    rm -r $KERNEL_TMP
+    rm -rf $KERNEL_TMP
     ARCH=arm64 O=$KERNEL_TMP scripts/kconfig/merge_config.sh $KERNEL_CFG/base_$platform"_"$device\_defconfig $KERNEL_CFG/android-base.config $KERNEL_CFG/android-base-arm64.config $KERNEL_CFG/android-recommended.config $KERNEL_CFG/android-extra.config
     $BUILD savedefconfig
     mv $KERNEL_TMP/defconfig ./arch/arm64/configs/aosp_$platform"_"$device\_defconfig
